@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <h2>Your total score is: {{ total_score }}</h2>
+    <h2>You have {{ pass_fail }} the quiz.</h2>
+    <h3>Details:</h3>
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>User Response</th>
+            <th>Score</th>
+        </tr>
+        {% for row in score_df.iterrows() %}
+            <tr>
+                <td>{{ row[1]['Question'] }}</td>
+                <td>{{ row[1]['User Response'] }}</td>
+                <td>{{ row[1]['Score'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action="/reset" method="get">
+        <input type="submit" value="Start New Quiz">
+    </form>
+</body>
+</html>
